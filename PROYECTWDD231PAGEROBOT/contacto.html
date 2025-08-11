@@ -1,0 +1,55 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Solicitar proyecto - Robotics Lab</title>
+<meta name="description" content="Formulario para solicitar proyectos personalizados de robótica.">
+<meta name="author" content="Ricardo Sanjines">
+<link rel="icon" href="img/3.svg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="container header" role="banner">
+  <div class="brand"><img src="img/3.svg" alt=""><div><h1>Solicitar Proyecto</h1></div></div>
+  <nav role="navigation" aria-label="Principal">
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="catalogo.html">Catálogo</a></li>
+      <li><a href="contacto.html">Solicitar Proyecto</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container">
+  <h2>Formulario de solicitud</h2>
+  <form id="solicitud" action="form-action.html" method="get" novalidate>
+    <label for="nombre">Nombre completo</label><br>
+    <input id="nombre" name="nombre" required><br><br>
+
+    <label for="email">Correo electrónico</label><br>
+    <input id="email" name="email" type="email" required><br><br>
+
+    <label for="tipo">Tipo de proyecto</label><br>
+    <select id="tipo" name="tipo">
+      <option value="educativo">Educativo</option>
+      <option value="competencia">Competencia</option>
+      <option value="personalizado">Personalizado</option>
+    </select><br><br>
+
+    <label for="mensaje">Detalle de la solicitud</label><br>
+    <textarea id="mensaje" name="mensaje" rows="6" required></textarea><br><br>
+
+    <button class="btn" type="submit">Enviar solicitud</button>
+  </form>
+</main>
+
+<footer class="container footer">
+  <div>© Ricardo Sanjines - Robotics Lab</div>
+  <div><a href="attributions.html">Atribuciones</a> · <a href="#">Video demo (enlace)</a></div>
+</footer>
+
+<script type="module" src="scripts/form.js"></script>
+</body>
+</html>

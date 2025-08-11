@@ -1,0 +1,137 @@
+[
+  {
+    "id": 1,
+    "nombre": "Brazo Robótico Acrílico - 4 ejes",
+    "precio": 350,
+    "categoria": "Brazos robóticos",
+    "controlador": "Arduino UNO",
+    "descripcion": "Descripción del producto 1: Brazo Robótico Acrílico - 4 ejes diseñado para educación y prototipado.",
+    "imagen": "img/1.jpg"
+  },
+  {
+    "id": 2,
+    "nombre": "Brazo Robótico Mini - 3 ejes",
+    "precio": 280,
+    "categoria": "Brazos robóticos",
+    "controlador": "ESP32",
+    "descripcion": "Descripción del producto 2: Brazo Robótico Mini - 3 ejes diseñado para educación y prototipado.",
+    "imagen": "img/2.jpg"
+  },
+  {
+    "id": 3,
+    "nombre": "Robot Futbolero V1",
+    "precio": 420,
+    "categoria": "Robots futboleros",
+    "controlador": "ESP32",
+    "descripcion": "Descripción del producto 3: Robot Futbolero V1 diseñado para educación y prototipado.",
+    "imagen": "img/3.jpg"
+  },
+  {
+    "id": 4,
+    "nombre": "Rover Explorador - Kit",
+    "precio": 390,
+    "categoria": "Rovers",
+    "controlador": "Arduino UNO",
+    "descripcion": "Descripción del producto 4: Rover Explorador - Kit diseñado para educación y prototipado.",
+    "imagen": "img/4.jpg"
+  },
+  {
+    "id": 5,
+    "nombre": "Humanoide Básico EDU",
+    "precio": 500,
+    "categoria": "Robots humanoides",
+    "controlador": "ESP32",
+    "descripcion": "Descripción del producto 5: Humanoide Básico EDU diseñado para educación y prototipado.",
+    "imagen": "img/5.jpg"
+  },
+  {
+    "id": 6,
+    "nombre": "Kit LEGO EV3 Educativo",
+    "precio": 220,
+    "categoria": "Kits LEGO",
+    "controlador": "LEGO EV3",
+    "descripcion": "Descripción del producto 6: Kit LEGO EV3 Educativo diseñado para educación y prototipado.",
+    "imagen": "img/6.jpg"
+  },
+  {
+    "id": 7,
+    "nombre": "Sensor Pack (5pcs)",
+    "precio": 45,
+    "categoria": "Materiales",
+    "controlador": "ESP32",
+    "descripcion": "Descripción del producto 7: Sensor Pack (5pcs) diseñado para educación y prototipado.",
+    "imagen": "img/7.jpg"
+  },
+  {
+    "id": 8,
+    "nombre": "Shield Motor 2x",
+    "precio": 30,
+    "categoria": "Materiales",
+    "controlador": "Arduino UNO",
+    "descripcion": "Descripción del producto 8: Shield Motor 2x diseñado para educación y prototipado.",
+    "imagen": "img/8.jpg"
+  },
+  {
+    "id": 9,
+    "nombre": "Placa ESP32-CAM",
+    "precio": 25,
+    "categoria": "Materiales",
+    "controlador": "ESP32",
+    "descripcion": "Descripción del producto 9: Placa ESP32-CAM diseñado para educación y prototipado.",
+    "imagen": "img/9.jpg"
+  },
+  {
+    "id": 10,
+    "nombre": "Estación de Pruebas (Breadboard kit)",
+    "precio": 40,
+    "categoria": "Materiales",
+    "controlador": "Arduino UNO",
+    "descripcion": "Descripción del producto 10: Estación de Pruebas (Breadboard kit) diseñado para educación y prototipado.",
+    "imagen": "img/10.jpg"
+  },
+  {
+    "id": 11,
+    "nombre": "Puerta Segura IoT",
+    "precio": 160,
+    "categoria": "Sistemas de seguridad",
+    "controlador": "ESP32",
+    "descripcion": "Descripción del producto 11: Puerta Segura IoT diseñado para educación y prototipado.",
+    "imagen": "img/11.jpg"
+  },
+  {
+    "id": 12,
+    "nombre": "Robótico Trupan Chasis",
+    "precio": 310,
+    "categoria": "Proyectos especiales",
+    "controlador": "Arduino UNO",
+    "descripcion": "Descripción del producto 12: Robótico Trupan Chasis diseñado para educación y prototipado.",
+    "imagen": "img/12.jpg"
+  },
+  {
+    "id": 13,
+    "nombre": "Kit Detección Obstáculos",
+    "precio": 55,
+    "categoria": "Materiales",
+    "controlador": "ESP32",
+    "descripcion": "Descripción del producto 13: Kit Detección Obstáculos diseñado para educación y prototipado.",
+    "imagen": "img/13.jpg"
+  },
+  {
+    "id": 14,
+    "nombre": "Brazo Delta EDU",
+    "precio": 450,
+    "categoria": "Brazos robóticos",
+    "controlador": "Arduino UNO",
+    "descripcion": "Descripción del producto 14: Brazo Delta EDU diseñado para educación y prototipado.",
+    "imagen": "img/14.jpg"
+  },
+  {
+    "id": 15,
+    "nombre": "Proyecto a Medida (Solicitud)",
+    "precio": 0,
+    "categoria": "Servicios",
+    "controlador": "Dependiente",
+    "descripcion": "Descripción del producto 15: Proyecto a Medida (Solicitud) diseñado para educación y prototipado.",
+    "imagen": "img/15.jpg"
+  }
+]

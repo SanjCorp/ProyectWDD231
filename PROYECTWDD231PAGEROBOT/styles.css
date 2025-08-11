@@ -1,0 +1,45 @@
+
+/* styles.css - simple responsive layout and accessible modal */
+:root{
+  --accent:#0f172a;
+  --accent-2:#2563eb;
+  --bg:#ffffff;
+  --muted:#6b7280;
+  --maxw:1100px;
+  --gap:1rem;
+  --radius:12px;
+}
+*{box-sizing:border-box}
+body{font-family:Inter, system-ui, Arial, sans-serif;margin:0;background:var(--bg);color:var(--accent);line-height:1.45}
+.container{max-width:var(--maxw);margin:0 auto;padding:1rem}
+.header{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0}
+.brand{display:flex;align-items:center;gap:.6rem}
+.brand img{width:44px;height:44px;border-radius:8px}
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1rem;align-items:center}
+nav a{color:var(--accent);text-decoration:none;font-weight:600}
+.hero{display:grid;grid-template-columns:1fr;gap:1rem;align-items:center;padding:1rem 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:1rem 0}
+.card{background:#f8fafc;border-radius:var(--radius);padding:1rem;box-shadow:0 2px 6px rgba(2,6,23,.04)}
+.card img{width:100%;height:160px;object-fit:cover;border-radius:8px}
+.footer{border-top:1px solid #e6e7eb;padding:1rem 0;margin-top:2rem;font-size:.9rem;color:var(--muted)}
+
+/* responsive menu */
+.hamburger{display:none;cursor:pointer}
+@media (max-width:800px){
+  nav ul{display:none;flex-direction:column;background:#fff;position:absolute;right:1rem;top:68px;padding:1rem;border-radius:8px;box-shadow:0 6px 20px rgba(2,6,23,.08)}
+  .hamburger{display:block}
+  .hero{padding:0 1rem 1rem}
+}
+
+/* modal */
+.modal-backdrop{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,.5);padding:1rem;z-index:40}
+.modal{background:#fff;border-radius:10px;max-width:760px;width:100%;padding:1rem;box-shadow:0 10px 30px rgba(2,6,23,.12)}
+.modal .close{float:right;background:none;border:0;font-size:20px;cursor:pointer}
+
+/* controls and filters */
+.controls{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+.btn{display:inline-block;padding:.5rem .8rem;border-radius:8px;border:0;background:var(--accent-2);color:#fff;font-weight:700;cursor:pointer;text-decoration:none}
+.filter{padding:.4rem .6rem;border-radius:8px;border:1px solid #e5e7eb;background:#fff;cursor:pointer}
+
+/* accessible focus */
+a:focus, button:focus, input:focus{outline:3px solid #dbeafe;outline-offset:2px}
