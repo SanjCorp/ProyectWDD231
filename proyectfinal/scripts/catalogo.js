@@ -1,7 +1,7 @@
 /* catalogo.js - ES module */
 export async function loadProducts() {
   try {
-    const res = await fetch('data/proyectos.json');
+    const res = await fetch('./data/proyectos.json');
 
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const data = await res.json();
