@@ -1,12 +1,12 @@
 [
   {
     "id": 1,
-    "nombre": "Brazo Robótico Acrílico - 4 ejes",
+    "nombre": "Brazo Robótico Acrílico con Arduino UNO",
     "precio": 350,
     "categoria": "Brazos robóticos",
     "controlador": "Arduino UNO",
-    "descripcion": "Descripción del producto 1: Brazo Robótico Acrílico - 4 ejes diseñado para educación y prototipado.",
-    "imagen": "img/1.jpg"
+    "descripcion": "Brazo robótico de 4 ejes, estructura en acrílico cortado con láser.",
+    "imagen": "img/brazo-acrilico.svg"
   },
   {
     "id": 2,
