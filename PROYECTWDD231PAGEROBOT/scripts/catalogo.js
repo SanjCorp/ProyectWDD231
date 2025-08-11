@@ -1,45 +1,111 @@
 // scripts/catalogo.js
-
 document.addEventListener('DOMContentLoaded', () => {
-    const catalogoContainer = document.querySelector('#catalogo-container');
-    const loader = document.createElement('p');
-    loader.textContent = 'Cargando proyectos...';
-    catalogoContainer.appendChild(loader);
+    const grid = document.querySelector('#catalogo-grid');
+    const filterSelect = document.querySelector('#filter');
+    const clearFavsBtn = document.querySelector('#clear-favs');
 
-    // Usar ruta relativa robusta para GitHub Pages
+    const modalBackdrop = document.querySelector('#modal-backdrop');
+    const modalContent = document.querySelector('#modal-content');
+    const modalClose = document.querySelector('#modal-close');
+
+    let proyectos = [];
+    let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+
+    // Función para renderizar proyectos
+    function renderProyectos(lista) {
+        grid.innerHTML = '';
+        if (lista.length === 0) {
+            grid.innerHTML = '<p>No hay proyectos disponibles.</p>';
+            return;
+        }
+
+        lista.forEach(proyecto => {
+            const card = document.createElement('div');
+            card.classList.add('proyecto-card');
+
+            card.innerHTML = `
+                <img src="${proyecto.imagen}" alt="${proyecto.nombre}" loading="lazy">
+                <h3>${proyecto.nombre}</h3>
+                <p>${proyecto.descripcion}</p>
+                <p><strong>Precio:</strong> $${proyecto.precio}</p>
+                <button class="ver-detalles">Ver detalles</button>
+                <button class="favorito">
+                    ${favoritos.includes(proyecto.id) ? '★ Quitar de favoritos' : '☆ Agregar a favoritos'}
+                </button>
+            `;
+
+            // Abrir modal con detalles
+            card.querySelector('.ver-detalles').addEventListener('click', () => {
+                modalContent.innerHTML = `
+                    <h2>${proyecto.nombre}</h2>
+                    <img src="${proyecto.imagen}" alt="${proyecto.nombre}" loading="lazy">
+                    <p>${proyecto.descripcion}</p>
+                    <p><strong>Precio:</strong> $${proyecto.precio}</p>
+                `;
+                modalBackdrop.setAttribute('aria-hidden', 'false');
+                modalBackdrop.style.display = 'flex';
+            });
+
+            // Agregar o quitar de favoritos
+            card.querySelector('.favorito').addEventListener('click', () => {
+                if (favoritos.includes(proyecto.id)) {
+                    favoritos = favoritos.filter(id => id !== proyecto.id);
+                } else {
+                    favoritos.push(proyecto.id);
+                }
+                localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                renderProyectos(lista);
+            });
+
+            grid.appendChild(card);
+        });
+    }
+
+    // Cerrar modal
+    modalClose.addEventListener('click', () => {
+        modalBackdrop.setAttribute('aria-hidden', 'true');
+        modalBackdrop.style.display = 'none';
+    });
+
+    // Cargar proyectos desde JSON
     fetch('./data/proyectos.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Error HTTP: ${response.status}`);
-            }
-            return response.json();
+        .then(res => {
+            if (!res.ok) throw new Error(`Error HTTP: ${res.status}`);
+            return res.json();
         })
         .then(data => {
-            catalogoContainer.innerHTML = ''; // limpiar loader
-            if (Array.isArray(data) && data.length > 0) {
-                data.forEach(item => {
-                    const card = document.createElement('div');
-                    card.classList.add('proyecto-card');
+            proyectos = data;
 
-                    card.innerHTML = `
-                        <img src="${item.imagen}" alt="${item.nombre}" loading="lazy">
-                        <h3>${item.nombre}</h3>
-                        <p>${item.descripcion}</p>
-                        <p><strong>Precio:</strong> $${item.precio}</p>
-                    `;
-                    catalogoContainer.appendChild(card);
-                });
-            } else {
-                catalogoContainer.innerHTML = '<p>No hay proyectos para mostrar.</p>';
-            }
+            // Llenar filtro de categorías
+            const categorias = ['all', ...new Set(proyectos.map(p => p.categoria))];
+            categorias.forEach(cat => {
+                const option = document.createElement('option');
+                option.value = cat;
+                option.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
+                filterSelect.appendChild(option);
+            });
+
+            renderProyectos(proyectos);
         })
-        .catch(error => {
-            console.error('Error cargando los proyectos:', error);
-            catalogoContainer.innerHTML = `
-                <p style="color:red;">
-                    No se pudieron cargar los proyectos.<br>
-                    Verifica que el archivo <code>data/proyectos.json</code> esté en la carpeta correcta y en GitHub Pages.
-                </p>
-            `;
+        .catch(err => {
+            console.error('Error cargando proyectos:', err);
+            grid.innerHTML = `<p style="color:red;">No se pudieron cargar los proyectos.</p>`;
         });
+
+    // Filtrar por categoría
+    filterSelect.addEventListener('change', () => {
+        const categoria = filterSelect.value;
+        if (categoria === 'all') {
+            renderProyectos(proyectos);
+        } else {
+            renderProyectos(proyectos.filter(p => p.categoria === categoria));
+        }
+    });
+
+    // Borrar favoritos
+    clearFavsBtn.addEventListener('click', () => {
+        favoritos = [];
+        localStorage.removeItem('favoritos');
+        renderProyectos(proyectos);
+    });
 });
