@@ -28,25 +28,25 @@
 <main class="container">
   <section class="controls">
     <label for="filter">Filtrar por categoría:</label>
-    <select id="filter" class="filter" aria-label="Filtrar productos">
-      <option value="all">Todas</option>
-    </select>
+   <select id="filter">
+  <option value="all" selected>Todos</option>
+</select>
+
     <button id="clear-favs" class="filter">Borrar favoritos</button>
   </section>
 
   <section>
     <h2>Catálogo completo</h2>
-    <div id="catalogo-grid" class="grid" aria-live="polite"></div>
+    <div id="catalogo-grid"></div>
   </section>
 </main>
 
 <!-- Accessible modal -->
-<div id="modal-backdrop" class="modal-backdrop" role="dialog" aria-hidden="true">
-  <div class="modal" role="document" aria-modal="true">
-    <button class="close" id="modal-close" aria-label="Cerrar">✕</button>
-    <div id="modal-content"></div>
-  </div>
+<div id="modal-backdrop" aria-hidden="true" style="display:none;">
+  <div id="modal-content"></div>
+  <button id="modal-close" aria-label="Cerrar modal">X</button>
 </div>
+
 
 <footer class="container footer">
   <div>© Ricardo Sanjines - Robotics Lab</div>
@@ -54,5 +54,6 @@
 </footer>
 
 <script type="module" src="scripts/catalogo.js"></script>
+
 </body>
 </html>
