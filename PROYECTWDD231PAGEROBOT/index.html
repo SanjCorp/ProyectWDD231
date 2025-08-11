@@ -1,25 +1,17 @@
-
 <!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robotics Lab - Proyectos y Kits Educativos</title>
-<meta name="description" content="Venta de proyectos y kits de robótica con ESP32 y Arduino UNO para universidades y colegios.">
+<title>Catálogo - Robotics Lab</title>
+<meta name="description" content="Catálogo completo de proyectos y kits de robótica.">
 <meta name="author" content="Ricardo Sanjines">
-<meta property="og:title" content="Robotics Lab - Proyectos y Kits Educativos">
-<link rel="icon" href="img/1.jpg">
+<link rel="icon" href="img/2.svg">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header class="container header" role="banner">
-  <div class="brand">
-    <img src="img/1.jpg" alt="logo">
-    <div>
-      <h1>Robotics Lab</h1>
-      <div style="color:var(--muted);font-size:.95rem">Transformamos ideas en proyectos</div>
-    </div>
-  </div>
+  <div class="brand"><img src="img/2.svg" alt=""><div><h1>Catálogo</h1></div></div>
   <div>
     <button class="hamburger" aria-expanded="false" aria-controls="site-nav">☰</button>
     <nav id="site-nav" role="navigation" aria-label="Principal">
@@ -33,37 +25,33 @@
 </header>
 
 <main class="container">
-  <section class="hero">
-    <h2>Proyectos electrónicos y kits de robótica para educación</h2>
-    <p>Compra proyectos terminados, kits o solicita un proyecto hecho a medida para tu curso o taller.</p>
-    <a class="btn" href="catalogo.html">Ver catálogo completo</a>
-  </section>
-
-  <section aria-labelledby="destacados">
-    <h3 id="destacados">Productos destacados</h3>
-    <div id="destacados-grid" class="grid"></div>
-  </section>
-
-  <section aria-labelledby="how">
-    <h3 id="how">Cómo funciona</h3>
-    <ol>
-      <li>Explora el catálogo y abre la ficha de producto.</li>
-      <li>Agrega a favoritos o solicita personalización desde el formulario.</li>
-      <li>Recibirás un correo con presupuesto (simulado en este ejercicio).</li>
-    </ol>
+  <section class="controls">
+    <label for="filter">Filtrar por categoría:</label>
+    <select id="filter" class="filter" aria-label="Filtrar productos">
+      <option value="all">Todas</option>
+    </select>
+    <button id="clear-favs" class="filter">Borrar favoritos</button>
   </section>
 
   <section>
-    <h3>Favoritos guardados</h3>
-    <div id="favoritos" class="grid"></div>
+    <h2>Catálogo completo</h2>
+    <div id="catalogo-grid" class="grid" aria-live="polite"></div>
   </section>
 </main>
 
-<footer class="container footer" role="contentinfo">
+<!-- Accessible modal -->
+<div id="modal-backdrop" class="modal-backdrop" role="dialog" aria-hidden="true">
+  <div class="modal" role="document" aria-modal="true">
+    <button class="close" id="modal-close" aria-label="Cerrar">✕</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<footer class="container footer">
   <div>© Ricardo Sanjines - Robotics Lab</div>
   <div><a href="attributions.html">Atribuciones</a> · <a href="#">Video demo (enlace)</a></div>
 </footer>
 
-<script type="module" src="scripts/main.js"></script>
+<script type="module" src="scripts/catalogo.js"></script>
 </body>
 </html>
