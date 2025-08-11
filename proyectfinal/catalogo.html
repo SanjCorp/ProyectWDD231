@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Catalog - Robotics Lab</title>
-<meta name="description" content="Complete catalog of robotics projects and kits.">
-<meta name="author" content="Ricardo Sanjines">
-<link rel="icon" href="img/2.jpg">
-<link rel="stylesheet" href="styles.css">
+<meta name="description" content="Complete catalog of robotics projects and kits." />
+<meta name="author" content="Ricardo Sanjines" />
+<link rel="icon" href="img/2.jpg" />
+<link rel="stylesheet" href="styles.css" />
 <style>
   /* Styles for catalog cards */
   .grid {
@@ -68,13 +68,105 @@
   .card button:hover {
     background: #003f8a;
   }
+
+  /* Modal styles */
+  #modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right:0;
+    bottom:0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  #modal-content {
+    background: white;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 90%;
+    padding: 1.5rem;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+  #modal-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #555;
+  }
+  #modal-content h3 {
+    margin-top: 0;
+    color: #0057b7;
+  }
+  #modal-content p {
+    color: #333;
+  }
+  #modal-content button.reserve-btn,
+  #modal-content button.send-btn {
+    background: #0057b7;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  #modal-content button.reserve-btn:hover,
+  #modal-content button.send-btn:hover {
+    background: #003f8a;
+  }
+
+  /* Reservation form styles */
+  #reservation-form {
+    display: none;
+    margin-top: 1rem;
+    text-align: left;
+  }
+  #reservation-form label {
+    display: block;
+    margin-top: 0.75rem;
+    font-weight: 600;
+    color: #0057b7;
+  }
+  #reservation-form input,
+  #reservation-form textarea {
+    width: 100%;
+    padding: 0.4rem 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 0.25rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    resize: vertical;
+  }
+  #reservation-form textarea {
+    min-height: 60px;
+  }
+  #form-message {
+    margin-top: 0.75rem;
+    color: green;
+    font-weight: 700;
+  }
+  #form-error {
+    margin-top: 0.75rem;
+    color: red;
+    font-weight: 700;
+  }
 </style>
 </head>
 <body>
 <header class="container header" role="banner">
   <div class="brand">
-    <!-- Optimized logo -->
-    <img src="img/2.jpg" alt="catalog logo" width="64" height="64" fetchpriority="high" loading="eager">
+    <img src="img/2.jpg" alt="catalog logo" width="64" height="64" fetchpriority="high" loading="eager" />
     <div><h1>Catalog</h1></div>
   </div>
   <div>
@@ -101,181 +193,60 @@
   <section>
     <h2>Full Catalog</h2>
     <div id="catalogo-grid" class="grid">
-      <div class="card">
-        <img src="img/1.jpg" alt="Acrylic Robotic Arm with Arduino UNO" loading="lazy" width="300" height="200">
+      <div class="card" data-info="4-axis robotic arm, structure made of laser-cut acrylic. Price: $350" data-name="Acrylic Robotic Arm with Arduino UNO">
+        <img src="img/1.jpg" alt="Acrylic Robotic Arm with Arduino UNO" loading="lazy" width="300" height="200" />
         <h4>Acrylic Robotic Arm with Arduino UNO</h4>
         <p><em>Robotic Arms · Arduino UNO</em></p>
         <p>4-axis robotic arm, structure made of laser-cut acrylic.</p>
         <p><strong>$350</strong></p>
         <div class="actions">
-          <button type="button" aria-label="More info about Acrylic Robotic Arm with Arduino UNO">Info</button>
-          <button type="button" aria-label="Reserve Acrylic Robotic Arm with Arduino UNO">Reserve</button>
+          <button type="button" class="info-btn" aria-label="More info about Acrylic Robotic Arm with Arduino UNO">Info</button>
+          <button type="button" class="reserve-btn">Reserve</button>
         </div>
       </div>
 
-      <div class="card">
-        <img src="img/2.jpg" alt="Mini Robotic Arm - 3 axes" loading="lazy" width="300" height="200">
+      <div class="card" data-info="Mini Robotic Arm - 3 axes designed for education and prototyping. Price: $280" data-name="Mini Robotic Arm - 3 axes">
+        <img src="img/2.jpg" alt="Mini Robotic Arm - 3 axes" loading="lazy" width="300" height="200" />
         <h4>Mini Robotic Arm - 3 axes</h4>
         <p><em>Robotic Arms · ESP32</em></p>
-        <p>Product 2 description: Mini Robotic Arm - 3 axes designed for education and prototyping.</p>
+        <p>Mini Robotic Arm - 3 axes designed for education and prototyping.</p>
         <p><strong>$280</strong></p>
         <div class="actions">
-          <button type="button" aria-label="More info about Mini Robotic Arm - 3 axes">Info</button>
-          <button type="button" aria-label="Reserve Mini Robotic Arm - 3 axes">Reserve</button>
+          <button type="button" class="info-btn" aria-label="More info about Mini Robotic Arm - 3 axes">Info</button>
+          <button type="button" class="reserve-btn">Reserve</button>
         </div>
       </div>
-
-      <div class="card">
-        <img src="img/3.jpg" alt="Soccer Robot V1" loading="lazy" width="300" height="200">
-        <h4>Soccer Robot V1</h4>
-        <p><em>Soccer Robots · ESP32</em></p>
-        <p>Product 3 description: Soccer Robot V1 designed for education and prototyping.</p>
-        <p><strong>$420</strong></p>
-        <div class="actions">
-          <button type="button" aria-label="More info about Soccer Robot V1">Info</button>
-          <button type="button" aria-label="Reserve Soccer Robot V1">Reserve</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="img/4.jpg" alt="Explorer Rover - Kit" loading="lazy" width="300" height="200">
-        <h4>Explorer Rover - Kit</h4>
-        <p><em>Rovers · Arduino UNO</em></p>
-        <p>Product 4 description: Explorer Rover - Kit designed for education and prototyping.</p>
-        <p><strong>$390</strong></p>
-        <div class="actions">
-          <button type="button" aria-label="More info about Explorer Rover - Kit">Info</button>
-          <button type="button" aria-label="Reserve Explorer Rover - Kit">Reserve</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="img/5.jpg" alt="Basic Humanoid EDU" loading="lazy" width="300" height="200">
-        <h4>Basic Humanoid EDU</h4>
-        <p><em>Humanoid Robots · ESP32</em></p>
-        <p>Product 5 description: Basic Humanoid EDU designed for education and prototyping.</p>
-        <p><strong>$500</strong></p>
-        <div class="actions">
-          <button type="button" aria-label="More info about Basic Humanoid EDU">Info</button>
-          <button type="button" aria-label="Reserve Basic Humanoid EDU">Reserve</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="img/6.jpg" alt="LEGO EV3 Educational Kit" loading="lazy" width="300" height="200">
-        <h4>LEGO EV3 Educational Kit</h4>
-        <p><em>LEGO Kits · LEGO EV3</em></p>
-        <p>Product 6 description: LEGO EV3 Educational Kit designed for education and prototyping.</p>
-        <p><strong>$220</strong></p>
-        <div class="actions">
-          <button type="button" aria-label="More info about LEGO EV3 Educational Kit">Info</button>
-          <button type="button" aria-label="Reserve LEGO EV3 Educational Kit">Reserve</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="img/7.jpg" alt="Sensor Pack (5pcs)" loading="lazy" width="300" height="200">
-        <h4>Sensor Pack (5pcs)</h4>
-        <p><em>Materials · ESP32</em></p>
-        <p>Product 7 description: Sensor Pack (5pcs) designed for education and prototyping.</p>
-        <p><strong>$45</strong></p>
-        <div class="actions">
-          <button type="button" aria-label="More info about Sensor Pack (5pcs)">Info</button>
-          <button type="button" aria-label="Reserve Sensor Pack (5pcs)">Reserve</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="img/8.jpg" alt="Motor Shield 2x" loading="lazy" width="300" height="200">
-        <h4>Motor Shield 2x</h4>
-        <p><em>Materials · Arduino UNO</em></p>
-        <p>Product 8 description: Motor Shield 2x designed for education and prototyping.</p>
-        <p><strong>$30</strong></p>
-        <div class="actions">
-          <button type="button" aria-label="More info about Motor Shield 2x">Info</button>
-          <button type="button" aria-label="Reserve Motor Shield 2x">Reserve</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="img/9.jpg" alt="ESP32-CAM Board" loading="lazy" width="300" height="200">
-        <h4>ESP32-CAM Board</h4>
-        <p><em>Materials · ESP32</em></p>
-        <p>Product 9 description: ESP32-CAM Board designed for education and prototyping.</p>
-        <p><strong>$25</strong></p>
-        <div class="actions">
-          <button type="button" aria-label="More info about ESP32-CAM Board">Info</button>
-          <button type="button" aria-label="Reserve ESP32-CAM Board">Reserve</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="img/10.jpg" alt="Test Station (Breadboard kit)" loading="lazy" width="300" height="200">
-        <h4>Test Station (Breadboard kit)</h4>
-        <p><em>Materials · Arduino UNO</em></p>
-        <p>Product 10 description: Test Station (Breadboard kit) designed for education and prototyping.</p>
-        <p><strong>$40</strong></p>
-        <div class="actions">
-          <button type="button" aria-label="More info about Test Station (Breadboard kit)">Info</button>
-          <button type="button" aria-label="Reserve Test Station (Breadboard kit)">Reserve</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="img/11.jpg" alt="Secure IoT Door" loading="lazy" width="300" height="200">
-        <h4>Secure IoT Door</h4>
-        <p><em>Security Systems · ESP32</em></p>
-        <p>Product 11 description: Secure IoT Door designed for education and prototyping.</p>
-        <p><strong>$160</strong></p>
-        <div class="actions">
-          <button type="button" aria-label="More info about Secure IoT Door">Info</button>
-          <button type="button" aria-label="Reserve Secure IoT Door">Reserve</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="img/12.jpg" alt="Trupan Robot Chassis" loading="lazy" width="300" height="200">
-        <h4>Trupan Robot Chassis</h4>
-        <p><em>Special Projects · Arduino UNO</em></p>
-        <p>Product 12 description: Trupan Robot Chassis designed for education and prototyping.</p>
-        <p><strong>$310</strong></p>
-        <div class="actions">
-          <button type="button" aria-label="More info about Trupan Robot Chassis">Info</button>
-          <button type="button" aria-label="Reserve Trupan Robot Chassis">Reserve</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="img/13.jpg" alt="Obstacle Detection Kit" loading="lazy" width="300" height="200">
-        <h4>Obstacle Detection Kit</h4>
-        <p><em>Materials · ESP32</em></p>
-        <p>Product 13 description: Obstacle Detection Kit designed for education and prototyping.</p>
-        <p><strong>$55</strong></p>
-        <div class="actions">
-          <button type="button" aria-label="More info about Obstacle Detection Kit">Info</button>
-          <button type="button" aria-label="Reserve Obstacle Detection Kit">Reserve</button>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="img/14.jpg" alt="Delta Arm EDU" loading="lazy" width="300" height="200">
-        <h4>Delta Arm EDU</h4>
-        <p><em>Robotic Arms · Arduino UNO</em></p>
-        <p>Product 14 description: Delta Arm EDU designed for education and prototyping.</p>
-        <p><strong>$450</strong></p>
-        <div class="actions">
-          <button type="button" aria-label="More info about Delta Arm EDU">Info</button>
-          <button type="button" aria-label="Reserve Delta Arm EDU">Reserve</button>
-        </div>
-      </div>
+      <!-- Add more cards as needed -->
     </div>
   </section>
 </main>
 
-<!-- Accessible modal -->
-<div id="modal-backdrop" aria-hidden="true" style="display:none;">
-  <div id="modal-content"></div>
-  <button id="modal-close" aria-label="Close modal">X</button>
+<!-- Modal -->
+<div id="modal-backdrop" aria-hidden="true">
+  <div id="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button id="modal-close" aria-label="Close modal">×</button>
+    <h3 id="modal-title">Product Information</h3>
+    <p id="modal-text"></p>
+
+    <button id="modal-reserve-btn" class="reserve-btn">Reserve This Product</button>
+
+    <!-- Reservation form -->
+    <form id="reservation-form" novalidate>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="comments">Comments (optional):</label>
+      <textarea id="comments" name="comments" placeholder="Any questions or details..."></textarea>
+
+      <button type="submit" class="send-btn">Send Reservation</button>
+
+      <p id="form-message" role="alert" style="display:none;"></p>
+      <p id="form-error" role="alert" style="display:none;"></p>
+    </form>
+  </div>
 </div>
 
 <footer class="container footer">
@@ -283,6 +254,92 @@
   <div><a href="attributions.html">Attributions</a> · <a href="#">Demo video (link)</a></div>
 </footer>
 
-<script type="module" src="./scripts/catalogo.js"></script>
+<script>
+  const modal = document.getElementById('modal-backdrop');
+  const modalText = document.getElementById('modal-text');
+  const modalCloseBtn = document.getElementById('modal-close');
+  const reserveBtnModal = document.getElementById('modal-reserve-btn');
+  const reservationForm = document.getElementById('reservation-form');
+  const formMessage = document.getElementById('form-message');
+  const formError = document.getElementById('form-error');
+  const modalTitle = document.getElementById('modal-title');
+
+  let currentProductName = '';
+
+  // Show modal with info
+  document.querySelectorAll('.info-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+      const card = e.target.closest('.card');
+      const info = card.getAttribute('data-info') || 'No additional information available.';
+      currentProductName = card.getAttribute('data-name') || 'Product';
+      modalText.textContent = info;
+      modalTitle.textContent = currentProductName;
+      reservationForm.style.display = 'none'; // Hide form initially
+      formMessage.style.display = 'none';
+      formError.style.display = 'none';
+      modalReserveBtn.style.display = 'inline-block'; // Show Reserve button
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+    });
+  });
+
+  // Show reservation form on Reserve button click
+  reserveBtnModal.addEventListener('click', () => {
+    modalReserveBtn.style.display = 'none';
+    reservationForm.style.display = 'block';
+    formMessage.style.display = 'none';
+    formError.style.display = 'none';
+  });
+
+  // Close modal
+  modalCloseBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  function closeModal() {
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+    reservationForm.reset();
+    reservationForm.style.display = 'none';
+    formMessage.style.display = 'none';
+    formError.style.display = 'none';
+    modalReserveBtn.style.display = 'inline-block';
+  }
+
+  // Form submission handling
+  reservationForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    formMessage.style.display = 'none';
+    formError.style.display = 'none';
+
+    // Basic validation
+    const name = reservationForm.name.value.trim();
+    const email = reservationForm.email.value.trim();
+
+    if (!name || !email) {
+      formError.textContent = 'Please fill in the required fields: Name and Email.';
+      formError.style.display = 'block';
+      return;
+    }
+
+    // Simple email format validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      formError.textContent = 'Please enter a valid email address.';
+      formError.style.display = 'block';
+      return;
+    }
+
+    // Simulate sending reservation (replace with actual backend call if needed)
+    formMessage.textContent = `Thank you, ${name}! Your reservation for "${currentProductName}" has been received. We will contact you shortly.`;
+    formMessage.style.display = 'block';
+    reservationForm.style.display = 'none';
+
+    // Optionally, reset form after submission
+    reservationForm.reset();
+  });
+</script>
 </body>
 </html>
