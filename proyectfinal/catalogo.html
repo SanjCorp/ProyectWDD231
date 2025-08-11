@@ -8,6 +8,49 @@
 <meta name="author" content="Ricardo Sanjines">
 <link rel="icon" href="img/2.jpg">
 <link rel="stylesheet" href="styles.css">
+<style>
+  /* Estilos para las tarjetas del catálogo */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 0.75rem;
+  }
+  .card h4 {
+    margin: 0.25rem 0;
+    font-size: 1.1rem;
+    color: #0057b7;
+  }
+  .card p {
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
+    color: #444;
+  }
+  .card p em {
+    font-size: 0.85rem;
+    color: #777;
+  }
+  .card p strong {
+    color: #222;
+    font-weight: 700;
+    margin-top: 0.5rem;
+  }
+</style>
 </head>
 <body>
 <header class="container header" role="banner">
@@ -39,7 +82,127 @@
 
   <section>
     <h2>Catálogo completo</h2>
-    <div id="catalogo-grid" class="grid"></div>
+    <div id="catalogo-grid" class="grid">
+      <div class="card">
+        <img src="img/1.jpg" alt="Brazo Robótico Acrílico con Arduino UNO" loading="lazy" width="300" height="200">
+        <h4>Brazo Robótico Acrílico con Arduino UNO</h4>
+        <p><em>Brazos robóticos · Arduino UNO</em></p>
+        <p>Brazo robótico de 4 ejes, estructura en acrílico cortado con láser.</p>
+        <p><strong>$350</strong></p>
+      </div>
+
+      <div class="card">
+        <img src="img/2.jpg" alt="Brazo Robótico Mini - 3 ejes" loading="lazy" width="300" height="200">
+        <h4>Brazo Robótico Mini - 3 ejes</h4>
+        <p><em>Brazos robóticos · ESP32</em></p>
+        <p>Descripción del producto 2: Brazo Robótico Mini - 3 ejes diseñado para educación y prototipado.</p>
+        <p><strong>$280</strong></p>
+      </div>
+
+      <div class="card">
+        <img src="img/3.jpg" alt="Robot Futbolero V1" loading="lazy" width="300" height="200">
+        <h4>Robot Futbolero V1</h4>
+        <p><em>Robots futboleros · ESP32</em></p>
+        <p>Descripción del producto 3: Robot Futbolero V1 diseñado para educación y prototipado.</p>
+        <p><strong>$420</strong></p>
+      </div>
+
+      <div class="card">
+        <img src="img/4.jpg" alt="Rover Explorador - Kit" loading="lazy" width="300" height="200">
+        <h4>Rover Explorador - Kit</h4>
+        <p><em>Rovers · Arduino UNO</em></p>
+        <p>Descripción del producto 4: Rover Explorador - Kit diseñado para educación y prototipado.</p>
+        <p><strong>$390</strong></p>
+      </div>
+
+      <div class="card">
+        <img src="img/5.jpg" alt="Humanoide Básico EDU" loading="lazy" width="300" height="200">
+        <h4>Humanoide Básico EDU</h4>
+        <p><em>Robots humanoides · ESP32</em></p>
+        <p>Descripción del producto 5: Humanoide Básico EDU diseñado para educación y prototipado.</p>
+        <p><strong>$500</strong></p>
+      </div>
+
+      <div class="card">
+        <img src="img/6.jpg" alt="Kit LEGO EV3 Educativo" loading="lazy" width="300" height="200">
+        <h4>Kit LEGO EV3 Educativo</h4>
+        <p><em>Kits LEGO · LEGO EV3</em></p>
+        <p>Descripción del producto 6: Kit LEGO EV3 Educativo diseñado para educación y prototipado.</p>
+        <p><strong>$220</strong></p>
+      </div>
+
+      <div class="card">
+        <img src="img/7.jpg" alt="Sensor Pack (5pcs)" loading="lazy" width="300" height="200">
+        <h4>Sensor Pack (5pcs)</h4>
+        <p><em>Materiales · ESP32</em></p>
+        <p>Descripción del producto 7: Sensor Pack (5pcs) diseñado para educación y prototipado.</p>
+        <p><strong>$45</strong></p>
+      </div>
+
+      <div class="card">
+        <img src="img/8.jpg" alt="Shield Motor 2x" loading="lazy" width="300" height="200">
+        <h4>Shield Motor 2x</h4>
+        <p><em>Materiales · Arduino UNO</em></p>
+        <p>Descripción del producto 8: Shield Motor 2x diseñado para educación y prototipado.</p>
+        <p><strong>$30</strong></p>
+      </div>
+
+      <div class="card">
+        <img src="img/9.jpg" alt="Placa ESP32-CAM" loading="lazy" width="300" height="200">
+        <h4>Placa ESP32-CAM</h4>
+        <p><em>Materiales · ESP32</em></p>
+        <p>Descripción del producto 9: Placa ESP32-CAM diseñado para educación y prototipado.</p>
+        <p><strong>$25</strong></p>
+      </div>
+
+      <div class="card">
+        <img src="img/10.jpg" alt="Estación de Pruebas (Breadboard kit)" loading="lazy" width="300" height="200">
+        <h4>Estación de Pruebas (Breadboard kit)</h4>
+        <p><em>Materiales · Arduino UNO</em></p>
+        <p>Descripción del producto 10: Estación de Pruebas (Breadboard kit) diseñado para educación y prototipado.</p>
+        <p><strong>$40</strong></p>
+      </div>
+
+      <div class="card">
+        <img src="img/11.jpg" alt="Puerta Segura IoT" loading="lazy" width="300" height="200">
+        <h4>Puerta Segura IoT</h4>
+        <p><em>Sistemas de seguridad · ESP32</em></p>
+        <p>Descripción del producto 11: Puerta Segura IoT diseñado para educación y prototipado.</p>
+        <p><strong>$160</strong></p>
+      </div>
+
+      <div class="card">
+        <img src="img/12.jpg" alt="Robótico Trupan Chasis" loading="lazy" width="300" height="200">
+        <h4>Robótico Trupan Chasis</h4>
+        <p><em>Proyectos especiales · Arduino UNO</em></p>
+        <p>Descripción del producto 12: Robótico Trupan Chasis diseñado para educación y prototipado.</p>
+        <p><strong>$310</strong></p>
+      </div>
+
+      <div class="card">
+        <img src="img/13.jpg" alt="Kit Detección Obstáculos" loading="lazy" width="300" height="200">
+        <h4>Kit Detección Obstáculos</h4>
+        <p><em>Materiales · ESP32</em></p>
+        <p>Descripción del producto 13: Kit Detección Obstáculos diseñado para educación y prototipado.</p>
+        <p><strong>$55</strong></p>
+      </div>
+
+      <div class="card">
+        <img src="img/14.jpg" alt="Brazo Delta EDU" loading="lazy" width="300" height="200">
+        <h4>Brazo Delta EDU</h4>
+        <p><em>Brazos robóticos · Arduino UNO</em></p>
+        <p>Descripción del producto 14: Brazo Delta EDU diseñado para educación y prototipado.</p>
+        <p><strong>$450</strong></p>
+      </div>
+
+      <div class="card">
+        <img src="img/15.jpg" alt="Proyecto a Medida (Solicitud)" loading="lazy" width="300" height="200">
+        <h4>Proyecto a Medida (Solicitud)</h4>
+        <p><em>Servicios · Dependiente</em></p>
+        <p>Descripción del producto 15: Proyecto a Medida (Solicitud) diseñado para educación y prototipado.</p>
+        <p><strong>Pedido</strong></p>
+      </div>
+    </div>
   </section>
 </main>
 
