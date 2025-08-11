@@ -3,126 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Robotics Lab - Proyectos y Kits Educativos</title>
-<meta name="description" content="Venta de proyectos y kits de robótica con ESP32 y Arduino UNO para universidades y colegios.">
+<title>Catálogo - Robotics Lab</title>
+<meta name="description" content="Catálogo completo de proyectos y kits de robótica.">
 <meta name="author" content="Ricardo Sanjines">
-<meta property="og:title" content="Robotics Lab - Proyectos y Kits Educativos">
-<link rel="icon" href="img/1.jpg">
-
-<!-- Preload para mejorar LCP -->
-<link rel="preload" href="styles.css" as="style">
+<link rel="icon" href="img/2.jpg">
 <link rel="stylesheet" href="styles.css">
-
-<style>
-  /* Ajustes para mejorar diseño, evitar CLS y cumplir principios visuales */
-  :root {
-    --primary: #0057b7;
-    --secondary: #f5f5f5;
-    --text: #222;
-    --muted: #666;
-  }
-
-  body {
-    margin: 0;
-    font-family: system-ui, sans-serif;
-    line-height: 1.5;
-    color: var(--text);
-    background: var(--secondary);
-  }
-
-  header.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    background: white;
-    border-bottom: 2px solid var(--primary);
-  }
-
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-  }
-
-  .brand img {
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  nav ul {
-    display: flex;
-    gap: 1rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  nav a {
-    text-decoration: none;
-    color: var(--primary);
-    font-weight: 600;
-  }
-
-  .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 2rem 1rem;
-    background: white;
-    margin-bottom: 2rem;
-  }
-
-  .hero h2 {
-    margin: 0;
-  }
-
-  .btn {
-    background: var(--primary);
-    color: white;
-    padding: 0.6rem 1.2rem;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-  }
-
-  section {
-    background: white;
-    padding: 1rem;
-    margin-bottom: 1.5rem;
-    border-radius: 8px;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-  }
-
-  footer {
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.9rem;
-    background: white;
-    border-top: 2px solid var(--primary);
-  }
-
-  @media (max-width: 600px) {
-    nav ul {
-      flex-direction: column;
-    }
-  }
-</style>
 </head>
 <body>
 <header class="container header" role="banner">
   <div class="brand">
-    <img src="img/1.jpg" alt="logo Robotics Lab" width="64" height="64" fetchpriority="high">
-    <div>
-      <h1>Robotics Lab</h1>
-      <div style="color:var(--muted);font-size:.95rem">Transformamos ideas en proyectos</div>
-    </div>
+    <!-- Logo optimizado -->
+    <img src="img/2.jpg" alt="logo catálogo" width="64" height="64" fetchpriority="high" loading="eager">
+    <div><h1>Catálogo</h1></div>
   </div>
   <div>
     <button class="hamburger" aria-expanded="false" aria-controls="site-nav">☰</button>
@@ -137,37 +29,31 @@
 </header>
 
 <main class="container">
-  <section class="hero">
-    <h2>Proyectos electrónicos y kits de robótica para educación</h2>
-    <p>Compra proyectos terminados, kits o solicita un proyecto hecho a medida para tu curso o taller.</p>
-    <a class="btn" href="catalogo.html">Ver catálogo completo</a>
-  </section>
-
-  <section aria-labelledby="destacados">
-    <h3 id="destacados">Productos destacados</h3>
-    <div id="destacados-grid" class="grid"></div>
-  </section>
-
-  <section aria-labelledby="how">
-    <h3 id="how">Cómo funciona</h3>
-    <ol>
-      <li>Explora el catálogo y abre la ficha de producto.</li>
-      <li>Agrega a favoritos o solicita personalización desde el formulario.</li>
-      <li>Recibirás un correo con presupuesto (simulado en este ejercicio).</li>
-    </ol>
+  <section class="controls">
+    <label for="filter">Filtrar por categoría:</label>
+    <select id="filter">
+      <option value="all" selected>Todos</option>
+    </select>
+    <button id="clear-favs" class="filter">Borrar favoritos</button>
   </section>
 
   <section>
-    <h3>Favoritos guardados</h3>
-    <div id="favoritos" class="grid"></div>
+    <h2>Catálogo completo</h2>
+    <div id="catalogo-grid" class="grid"></div>
   </section>
 </main>
 
-<footer class="container footer" role="contentinfo">
+<!-- Modal accesible -->
+<div id="modal-backdrop" aria-hidden="true" style="display:none;">
+  <div id="modal-content"></div>
+  <button id="modal-close" aria-label="Cerrar modal">X</button>
+</div>
+
+<footer class="container footer">
   <div>© Ricardo Sanjines - Robotics Lab</div>
   <div><a href="attributions.html">Atribuciones</a> · <a href="#">Video demo (enlace)</a></div>
 </footer>
 
-<script type="module" src="scripts/main.js"></script>
+<script type="module" src="./scripts/catalogo.js"></script>
 </body>
 </html>
