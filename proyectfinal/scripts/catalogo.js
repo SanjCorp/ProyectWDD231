@@ -2,6 +2,7 @@
 export async function loadProducts() {
   try {
     const res = await fetch('data/proyectos.json');
+
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const data = await res.json();
     if (data.length < 15) console.warn('Se esperan 15 o más items');
