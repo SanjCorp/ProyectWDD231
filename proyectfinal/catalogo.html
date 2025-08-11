@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Catálogo - Robotics Lab</title>
-<meta name="description" content="Catálogo completo de proyectos y kits de robótica.">
+<title>Catalog - Robotics Lab</title>
+<meta name="description" content="Complete catalog of robotics projects and kits.">
 <meta name="author" content="Ricardo Sanjines">
 <link rel="icon" href="img/2.jpg">
 <link rel="stylesheet" href="styles.css">
 <style>
-  /* Estilos para las tarjetas del catálogo */
+  /* Styles for catalog cards */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -50,22 +50,40 @@
     font-weight: 700;
     margin-top: 0.5rem;
   }
+  .card .actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+  }
+  .card button {
+    background: #0057b7;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  .card button:hover {
+    background: #003f8a;
+  }
 </style>
 </head>
 <body>
 <header class="container header" role="banner">
   <div class="brand">
-    <!-- Logo optimizado -->
-    <img src="img/2.jpg" alt="logo catálogo" width="64" height="64" fetchpriority="high" loading="eager">
-    <div><h1>Catálogo</h1></div>
+    <!-- Optimized logo -->
+    <img src="img/2.jpg" alt="catalog logo" width="64" height="64" fetchpriority="high" loading="eager">
+    <div><h1>Catalog</h1></div>
   </div>
   <div>
     <button class="hamburger" aria-expanded="false" aria-controls="site-nav">☰</button>
-    <nav id="site-nav" role="navigation" aria-label="Principal">
+    <nav id="site-nav" role="navigation" aria-label="Main">
       <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="catalogo.html">Catálogo</a></li>
-        <li><a href="contacto.html">Solicitar Proyecto</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="catalogo.html">Catalog</a></li>
+        <li><a href="contacto.html">Request Project</a></li>
       </ul>
     </nav>
   </div>
@@ -73,140 +91,196 @@
 
 <main class="container">
   <section class="controls">
-    <label for="filter">Filtrar por categoría:</label>
+    <label for="filter">Filter by category:</label>
     <select id="filter">
-      <option value="all" selected>Todos</option>
+      <option value="all" selected>All</option>
     </select>
-    <button id="clear-favs" class="filter">Borrar favoritos</button>
+    <button id="clear-favs" class="filter">Clear favorites</button>
   </section>
 
   <section>
-    <h2>Catálogo completo</h2>
+    <h2>Full Catalog</h2>
     <div id="catalogo-grid" class="grid">
       <div class="card">
-        <img src="img/1.jpg" alt="Brazo Robótico Acrílico con Arduino UNO" loading="lazy" width="300" height="200">
-        <h4>Brazo Robótico Acrílico con Arduino UNO</h4>
-        <p><em>Brazos robóticos · Arduino UNO</em></p>
-        <p>Brazo robótico de 4 ejes, estructura en acrílico cortado con láser.</p>
+        <img src="img/1.jpg" alt="Acrylic Robotic Arm with Arduino UNO" loading="lazy" width="300" height="200">
+        <h4>Acrylic Robotic Arm with Arduino UNO</h4>
+        <p><em>Robotic Arms · Arduino UNO</em></p>
+        <p>4-axis robotic arm, structure made of laser-cut acrylic.</p>
         <p><strong>$350</strong></p>
+        <div class="actions">
+          <button type="button" aria-label="More info about Acrylic Robotic Arm with Arduino UNO">Info</button>
+          <button type="button" aria-label="Reserve Acrylic Robotic Arm with Arduino UNO">Reserve</button>
+        </div>
       </div>
 
       <div class="card">
-        <img src="img/2.jpg" alt="Brazo Robótico Mini - 3 ejes" loading="lazy" width="300" height="200">
-        <h4>Brazo Robótico Mini - 3 ejes</h4>
-        <p><em>Brazos robóticos · ESP32</em></p>
-        <p>Descripción del producto 2: Brazo Robótico Mini - 3 ejes diseñado para educación y prototipado.</p>
+        <img src="img/2.jpg" alt="Mini Robotic Arm - 3 axes" loading="lazy" width="300" height="200">
+        <h4>Mini Robotic Arm - 3 axes</h4>
+        <p><em>Robotic Arms · ESP32</em></p>
+        <p>Product 2 description: Mini Robotic Arm - 3 axes designed for education and prototyping.</p>
         <p><strong>$280</strong></p>
+        <div class="actions">
+          <button type="button" aria-label="More info about Mini Robotic Arm - 3 axes">Info</button>
+          <button type="button" aria-label="Reserve Mini Robotic Arm - 3 axes">Reserve</button>
+        </div>
       </div>
 
       <div class="card">
-        <img src="img/3.jpg" alt="Robot Futbolero V1" loading="lazy" width="300" height="200">
-        <h4>Robot Futbolero V1</h4>
-        <p><em>Robots futboleros · ESP32</em></p>
-        <p>Descripción del producto 3: Robot Futbolero V1 diseñado para educación y prototipado.</p>
+        <img src="img/3.jpg" alt="Soccer Robot V1" loading="lazy" width="300" height="200">
+        <h4>Soccer Robot V1</h4>
+        <p><em>Soccer Robots · ESP32</em></p>
+        <p>Product 3 description: Soccer Robot V1 designed for education and prototyping.</p>
         <p><strong>$420</strong></p>
+        <div class="actions">
+          <button type="button" aria-label="More info about Soccer Robot V1">Info</button>
+          <button type="button" aria-label="Reserve Soccer Robot V1">Reserve</button>
+        </div>
       </div>
 
       <div class="card">
-        <img src="img/4.jpg" alt="Rover Explorador - Kit" loading="lazy" width="300" height="200">
-        <h4>Rover Explorador - Kit</h4>
+        <img src="img/4.jpg" alt="Explorer Rover - Kit" loading="lazy" width="300" height="200">
+        <h4>Explorer Rover - Kit</h4>
         <p><em>Rovers · Arduino UNO</em></p>
-        <p>Descripción del producto 4: Rover Explorador - Kit diseñado para educación y prototipado.</p>
+        <p>Product 4 description: Explorer Rover - Kit designed for education and prototyping.</p>
         <p><strong>$390</strong></p>
+        <div class="actions">
+          <button type="button" aria-label="More info about Explorer Rover - Kit">Info</button>
+          <button type="button" aria-label="Reserve Explorer Rover - Kit">Reserve</button>
+        </div>
       </div>
 
       <div class="card">
-        <img src="img/5.jpg" alt="Humanoide Básico EDU" loading="lazy" width="300" height="200">
-        <h4>Humanoide Básico EDU</h4>
-        <p><em>Robots humanoides · ESP32</em></p>
-        <p>Descripción del producto 5: Humanoide Básico EDU diseñado para educación y prototipado.</p>
+        <img src="img/5.jpg" alt="Basic Humanoid EDU" loading="lazy" width="300" height="200">
+        <h4>Basic Humanoid EDU</h4>
+        <p><em>Humanoid Robots · ESP32</em></p>
+        <p>Product 5 description: Basic Humanoid EDU designed for education and prototyping.</p>
         <p><strong>$500</strong></p>
+        <div class="actions">
+          <button type="button" aria-label="More info about Basic Humanoid EDU">Info</button>
+          <button type="button" aria-label="Reserve Basic Humanoid EDU">Reserve</button>
+        </div>
       </div>
 
       <div class="card">
-        <img src="img/6.jpg" alt="Kit LEGO EV3 Educativo" loading="lazy" width="300" height="200">
-        <h4>Kit LEGO EV3 Educativo</h4>
-        <p><em>Kits LEGO · LEGO EV3</em></p>
-        <p>Descripción del producto 6: Kit LEGO EV3 Educativo diseñado para educación y prototipado.</p>
+        <img src="img/6.jpg" alt="LEGO EV3 Educational Kit" loading="lazy" width="300" height="200">
+        <h4>LEGO EV3 Educational Kit</h4>
+        <p><em>LEGO Kits · LEGO EV3</em></p>
+        <p>Product 6 description: LEGO EV3 Educational Kit designed for education and prototyping.</p>
         <p><strong>$220</strong></p>
+        <div class="actions">
+          <button type="button" aria-label="More info about LEGO EV3 Educational Kit">Info</button>
+          <button type="button" aria-label="Reserve LEGO EV3 Educational Kit">Reserve</button>
+        </div>
       </div>
 
       <div class="card">
         <img src="img/7.jpg" alt="Sensor Pack (5pcs)" loading="lazy" width="300" height="200">
         <h4>Sensor Pack (5pcs)</h4>
-        <p><em>Materiales · ESP32</em></p>
-        <p>Descripción del producto 7: Sensor Pack (5pcs) diseñado para educación y prototipado.</p>
+        <p><em>Materials · ESP32</em></p>
+        <p>Product 7 description: Sensor Pack (5pcs) designed for education and prototyping.</p>
         <p><strong>$45</strong></p>
+        <div class="actions">
+          <button type="button" aria-label="More info about Sensor Pack (5pcs)">Info</button>
+          <button type="button" aria-label="Reserve Sensor Pack (5pcs)">Reserve</button>
+        </div>
       </div>
 
       <div class="card">
-        <img src="img/8.jpg" alt="Shield Motor 2x" loading="lazy" width="300" height="200">
-        <h4>Shield Motor 2x</h4>
-        <p><em>Materiales · Arduino UNO</em></p>
-        <p>Descripción del producto 8: Shield Motor 2x diseñado para educación y prototipado.</p>
+        <img src="img/8.jpg" alt="Motor Shield 2x" loading="lazy" width="300" height="200">
+        <h4>Motor Shield 2x</h4>
+        <p><em>Materials · Arduino UNO</em></p>
+        <p>Product 8 description: Motor Shield 2x designed for education and prototyping.</p>
         <p><strong>$30</strong></p>
+        <div class="actions">
+          <button type="button" aria-label="More info about Motor Shield 2x">Info</button>
+          <button type="button" aria-label="Reserve Motor Shield 2x">Reserve</button>
+        </div>
       </div>
 
       <div class="card">
-        <img src="img/9.jpg" alt="Placa ESP32-CAM" loading="lazy" width="300" height="200">
-        <h4>Placa ESP32-CAM</h4>
-        <p><em>Materiales · ESP32</em></p>
-        <p>Descripción del producto 9: Placa ESP32-CAM diseñado para educación y prototipado.</p>
+        <img src="img/9.jpg" alt="ESP32-CAM Board" loading="lazy" width="300" height="200">
+        <h4>ESP32-CAM Board</h4>
+        <p><em>Materials · ESP32</em></p>
+        <p>Product 9 description: ESP32-CAM Board designed for education and prototyping.</p>
         <p><strong>$25</strong></p>
+        <div class="actions">
+          <button type="button" aria-label="More info about ESP32-CAM Board">Info</button>
+          <button type="button" aria-label="Reserve ESP32-CAM Board">Reserve</button>
+        </div>
       </div>
 
       <div class="card">
-        <img src="img/10.jpg" alt="Estación de Pruebas (Breadboard kit)" loading="lazy" width="300" height="200">
-        <h4>Estación de Pruebas (Breadboard kit)</h4>
-        <p><em>Materiales · Arduino UNO</em></p>
-        <p>Descripción del producto 10: Estación de Pruebas (Breadboard kit) diseñado para educación y prototipado.</p>
+        <img src="img/10.jpg" alt="Test Station (Breadboard kit)" loading="lazy" width="300" height="200">
+        <h4>Test Station (Breadboard kit)</h4>
+        <p><em>Materials · Arduino UNO</em></p>
+        <p>Product 10 description: Test Station (Breadboard kit) designed for education and prototyping.</p>
         <p><strong>$40</strong></p>
+        <div class="actions">
+          <button type="button" aria-label="More info about Test Station (Breadboard kit)">Info</button>
+          <button type="button" aria-label="Reserve Test Station (Breadboard kit)">Reserve</button>
+        </div>
       </div>
 
       <div class="card">
-        <img src="img/11.jpg" alt="Puerta Segura IoT" loading="lazy" width="300" height="200">
-        <h4>Puerta Segura IoT</h4>
-        <p><em>Sistemas de seguridad · ESP32</em></p>
-        <p>Descripción del producto 11: Puerta Segura IoT diseñado para educación y prototipado.</p>
+        <img src="img/11.jpg" alt="Secure IoT Door" loading="lazy" width="300" height="200">
+        <h4>Secure IoT Door</h4>
+        <p><em>Security Systems · ESP32</em></p>
+        <p>Product 11 description: Secure IoT Door designed for education and prototyping.</p>
         <p><strong>$160</strong></p>
+        <div class="actions">
+          <button type="button" aria-label="More info about Secure IoT Door">Info</button>
+          <button type="button" aria-label="Reserve Secure IoT Door">Reserve</button>
+        </div>
       </div>
 
       <div class="card">
-        <img src="img/12.jpg" alt="Robótico Trupan Chasis" loading="lazy" width="300" height="200">
-        <h4>Robótico Trupan Chasis</h4>
-        <p><em>Proyectos especiales · Arduino UNO</em></p>
-        <p>Descripción del producto 12: Robótico Trupan Chasis diseñado para educación y prototipado.</p>
+        <img src="img/12.jpg" alt="Trupan Robot Chassis" loading="lazy" width="300" height="200">
+        <h4>Trupan Robot Chassis</h4>
+        <p><em>Special Projects · Arduino UNO</em></p>
+        <p>Product 12 description: Trupan Robot Chassis designed for education and prototyping.</p>
         <p><strong>$310</strong></p>
+        <div class="actions">
+          <button type="button" aria-label="More info about Trupan Robot Chassis">Info</button>
+          <button type="button" aria-label="Reserve Trupan Robot Chassis">Reserve</button>
+        </div>
       </div>
 
       <div class="card">
-        <img src="img/13.jpg" alt="Kit Detección Obstáculos" loading="lazy" width="300" height="200">
-        <h4>Kit Detección Obstáculos</h4>
-        <p><em>Materiales · ESP32</em></p>
-        <p>Descripción del producto 13: Kit Detección Obstáculos diseñado para educación y prototipado.</p>
+        <img src="img/13.jpg" alt="Obstacle Detection Kit" loading="lazy" width="300" height="200">
+        <h4>Obstacle Detection Kit</h4>
+        <p><em>Materials · ESP32</em></p>
+        <p>Product 13 description: Obstacle Detection Kit designed for education and prototyping.</p>
         <p><strong>$55</strong></p>
+        <div class="actions">
+          <button type="button" aria-label="More info about Obstacle Detection Kit">Info</button>
+          <button type="button" aria-label="Reserve Obstacle Detection Kit">Reserve</button>
+        </div>
       </div>
 
       <div class="card">
-        <img src="img/14.jpg" alt="Brazo Delta EDU" loading="lazy" width="300" height="200">
-        <h4>Brazo Delta EDU</h4>
-        <p><em>Brazos robóticos · Arduino UNO</em></p>
-        <p>Descripción del producto 14: Brazo Delta EDU diseñado para educación y prototipado.</p>
+        <img src="img/14.jpg" alt="Delta Arm EDU" loading="lazy" width="300" height="200">
+        <h4>Delta Arm EDU</h4>
+        <p><em>Robotic Arms · Arduino UNO</em></p>
+        <p>Product 14 description: Delta Arm EDU designed for education and prototyping.</p>
         <p><strong>$450</strong></p>
+        <div class="actions">
+          <button type="button" aria-label="More info about Delta Arm EDU">Info</button>
+          <button type="button" aria-label="Reserve Delta Arm EDU">Reserve</button>
+        </div>
       </div>
     </div>
   </section>
 </main>
 
-<!-- Modal accesible -->
+<!-- Accessible modal -->
 <div id="modal-backdrop" aria-hidden="true" style="display:none;">
   <div id="modal-content"></div>
-  <button id="modal-close" aria-label="Cerrar modal">X</button>
+  <button id="modal-close" aria-label="Close modal">X</button>
 </div>
 
 <footer class="container footer">
   <div>© Ricardo Sanjines - Robotics Lab</div>
-  <div><a href="attributions.html">Atribuciones</a> · <a href="#">Video demo (enlace)</a></div>
+  <div><a href="attributions.html">Attributions</a> · <a href="#">Demo video (link)</a></div>
 </footer>
 
 <script type="module" src="./scripts/catalogo.js"></script>
