@@ -1,4 +1,3 @@
-
 /* styles.css - simple responsive layout and accessible modal */
 :root{
   --accent:#0f172a;
@@ -43,3 +42,20 @@ nav a{color:var(--accent);text-decoration:none;font-weight:600}
 
 /* accessible focus */
 a:focus, button:focus, input:focus{outline:3px solid #dbeafe;outline-offset:2px}
+
+/* --- NUEVAS REGLAS PARA MEJORAR CLS Y LCP --- */
+
+/* Evitar saltos de layout reservando espacio para imágenes */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Reservar proporción para imágenes en tarjetas y grids */
+.card img,
+#catalogo-grid img,
+#destacados-grid img {
+  aspect-ratio: 4 / 3; /* mantiene proporción estable */
+  object-fit: cover;
+}
