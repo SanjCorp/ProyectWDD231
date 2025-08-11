@@ -76,6 +76,11 @@
     <label for="filter">Filter by category:</label>
     <select id="filter">
       <option value="all" selected>All</option>
+      <option value="brazo">Robotic arms</option>
+      <option value="rovers">Rovers</option>
+      <option value="robots">Robots (Humanoid & Soccer)</option>
+      <option value="materiales">Materials</option>
+      <option value="kits">Kits</option>
     </select>
     <button id="clear-favs" class="filter">Clear favorites</button>
   </section>
@@ -83,7 +88,8 @@
   <section>
     <h2>Complete catalog</h2>
     <div id="catalogo-grid" class="grid">
-      <div class="card">
+      <!-- Cards remain exactly the same -->
+      <div class="card" data-cat="brazo">
         <img src="img/1.jpg" alt="Acrylic Robotic Arm with Arduino UNO" loading="lazy" width="300" height="200">
         <h4>Acrylic Robotic Arm with Arduino UNO</h4>
         <p><em>Robotic arms · Arduino UNO</em></p>
@@ -91,7 +97,7 @@
         <p><strong>$350</strong></p>
       </div>
 
-      <div class="card">
+      <div class="card" data-cat="brazo">
         <img src="img/2.jpg" alt="Mini Robotic Arm - 3 axes" loading="lazy" width="300" height="200">
         <h4>Mini Robotic Arm - 3 axes</h4>
         <p><em>Robotic arms · ESP32</em></p>
@@ -99,7 +105,7 @@
         <p><strong>$280</strong></p>
       </div>
 
-      <div class="card">
+      <div class="card" data-cat="robots">
         <img src="img/3.jpg" alt="Robot Soccer Player V1" loading="lazy" width="300" height="200">
         <h4>Robot Soccer Player V1</h4>
         <p><em>Soccer robots · ESP32</em></p>
@@ -107,7 +113,7 @@
         <p><strong>$420</strong></p>
       </div>
 
-      <div class="card">
+      <div class="card" data-cat="rovers">
         <img src="img/4.jpg" alt="Explorer Rover - Kit" loading="lazy" width="300" height="200">
         <h4>Explorer Rover - Kit</h4>
         <p><em>Rovers · Arduino UNO</em></p>
@@ -115,7 +121,7 @@
         <p><strong>$390</strong></p>
       </div>
 
-      <div class="card">
+      <div class="card" data-cat="robots">
         <img src="img/5.jpg" alt="Basic Humanoid EDU" loading="lazy" width="300" height="200">
         <h4>Basic Humanoid EDU</h4>
         <p><em>Humanoid robots · ESP32</em></p>
@@ -123,7 +129,7 @@
         <p><strong>$500</strong></p>
       </div>
 
-      <div class="card">
+      <div class="card" data-cat="kits">
         <img src="img/6.jpg" alt="LEGO EV3 Educational Kit" loading="lazy" width="300" height="200">
         <h4>LEGO EV3 Educational Kit</h4>
         <p><em>LEGO kits · LEGO EV3</em></p>
@@ -131,7 +137,7 @@
         <p><strong>$220</strong></p>
       </div>
 
-      <div class="card">
+      <div class="card" data-cat="materiales">
         <img src="img/7.jpg" alt="Sensor Pack (5pcs)" loading="lazy" width="300" height="200">
         <h4>Sensor Pack (5pcs)</h4>
         <p><em>Materials · ESP32</em></p>
@@ -139,7 +145,7 @@
         <p><strong>$45</strong></p>
       </div>
 
-      <div class="card">
+      <div class="card" data-cat="materiales">
         <img src="img/8.jpg" alt="Motor Shield 2x" loading="lazy" width="300" height="200">
         <h4>Motor Shield 2x</h4>
         <p><em>Materials · Arduino UNO</em></p>
@@ -147,7 +153,7 @@
         <p><strong>$30</strong></p>
       </div>
 
-      <div class="card">
+      <div class="card" data-cat="materiales">
         <img src="img/9.jpg" alt="ESP32-CAM Board" loading="lazy" width="300" height="200">
         <h4>ESP32-CAM Board</h4>
         <p><em>Materials · ESP32</em></p>
@@ -155,7 +161,7 @@
         <p><strong>$25</strong></p>
       </div>
 
-      <div class="card">
+      <div class="card" data-cat="materiales">
         <img src="img/10.jpg" alt="Testing Station (Breadboard kit)" loading="lazy" width="300" height="200">
         <h4>Testing Station (Breadboard kit)</h4>
         <p><em>Materials · Arduino UNO</em></p>
@@ -179,7 +185,7 @@
         <p><strong>$310</strong></p>
       </div>
 
-      <div class="card">
+      <div class="card" data-cat="materiales">
         <img src="img/13.jpg" alt="Obstacle Detection Kit" loading="lazy" width="300" height="200">
         <h4>Obstacle Detection Kit</h4>
         <p><em>Materials · ESP32</em></p>
@@ -187,7 +193,7 @@
         <p><strong>$55</strong></p>
       </div>
 
-      <div class="card">
+      <div class="card" data-cat="brazo">
         <img src="img/14.jpg" alt="Delta Arm EDU" loading="lazy" width="300" height="200">
         <h4>Delta Arm EDU</h4>
         <p><em>Robotic arms · Arduino UNO</em></p>
@@ -210,5 +216,29 @@
 </footer>
 
 <script type="module" src="./scripts/catalogo.js"></script>
+
+<!-- Filtro dinámico -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const filterSelect = document.getElementById('filter');
+  const cards = document.querySelectorAll('#catalogo-grid .card');
+
+  function applyFilter() {
+    const selected = filterSelect.value;
+    cards.forEach(card => {
+      const cat = card.dataset.cat || '';
+      if (selected === 'all' || cat === selected) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  filterSelect.addEventListener('change', applyFilter);
+  applyFilter(); // Ejecutar al cargar
+});
+</script>
+
 </body>
 </html>
