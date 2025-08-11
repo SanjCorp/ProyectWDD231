@@ -1,51 +1,51 @@
-// catalogo.js
-const catalogoGrid = document.getElementById('catalogo-grid');
+// catalog.js
+const catalogGrid = document.getElementById('catalog-grid');
 const filterSelect = document.getElementById('filter');
 
-let productos = [];
+let products = [];
 
-// Carga JSON y muestra catálogo
-async function cargarProductos() {
+// Load JSON and display catalog
+async function loadProducts() {
   try {
-    const res = await fetch('data/proyectos.json'); // ajusta ruta si es necesario
-    productos = await res.json();
-    mostrarProductos(productos);
-    cargarCategorias(productos);
+    const res = await fetch('data/projects.json'); // adjust path if necessary
+    products = await res.json();
+    displayProducts(products);
+    loadCategories(products);
   } catch (error) {
-    console.error('Error cargando productos:', error);
+    console.error('Error loading products:', error);
   }
 }
 
-// Crea la tarjeta HTML para un producto
-function crearTarjeta(producto) {
+// Create the HTML card for a product
+function createCard(product) {
   const div = document.createElement('div');
   div.className = 'card';
   div.innerHTML = `
-    <img src="${producto.imagen}" alt="${producto.nombre}" loading="lazy" width="300" height="200">
-    <h4>${producto.nombre}</h4>
-    <p><em>${producto.categoria} · ${producto.controlador}</em></p>
-    <p>${producto.descripcion.substring(0, 70)}...</p>
-    <p><strong>${producto.precio > 0 ? '$' + producto.precio : 'Pedido'}</strong></p>
+    <img src="${product.image}" alt="${product.name}" loading="lazy" width="300" height="200">
+    <h4>${product.name}</h4>
+    <p><em>${product.category} · ${product.controller}</em></p>
+    <p>${product.description.substring(0, 70)}...</p>
+    <p><strong>${product.price > 0 ? '$' + product.price : 'On request'}</strong></p>
   `;
   return div;
 }
 
-// Muestra productos en el grid
-function mostrarProductos(lista) {
-  catalogoGrid.innerHTML = '';
-  if(lista.length === 0) {
-    catalogoGrid.innerHTML = '<p>No hay productos que mostrar.</p>';
+// Display products in the grid
+function displayProducts(list) {
+  catalogGrid.innerHTML = '';
+  if (list.length === 0) {
+    catalogGrid.innerHTML = '<p>No products to display.</p>';
     return;
   }
-  lista.forEach(p => {
-    catalogoGrid.appendChild(crearTarjeta(p));
+  list.forEach(p => {
+    catalogGrid.appendChild(createCard(p));
   });
 }
 
-// Llena filtro de categorías único
-function cargarCategorias(lista) {
-  const categorias = Array.from(new Set(lista.map(p => p.categoria))).sort();
-  categorias.forEach(cat => {
+// Populate unique category filter
+function loadCategories(list) {
+  const categories = Array.from(new Set(list.map(p => p.category))).sort();
+  categories.forEach(cat => {
     const option = document.createElement('option');
     option.value = cat;
     option.textContent = cat;
@@ -53,14 +53,14 @@ function cargarCategorias(lista) {
   });
 }
 
-// Evento filtro categoría
+// Filter category event
 filterSelect.addEventListener('change', () => {
-  if(filterSelect.value === 'all') {
-    mostrarProductos(productos);
+  if (filterSelect.value === 'all') {
+    displayProducts(products);
   } else {
-    mostrarProductos(productos.filter(p => p.categoria === filterSelect.value));
+    displayProducts(products.filter(p => p.category === filterSelect.value));
   }
 });
 
-// Inicialización
-document.addEventListener('DOMContentLoaded', cargarProductos);
+// Initialization
+document.addEventListener('DOMContentLoaded', loadProducts);
