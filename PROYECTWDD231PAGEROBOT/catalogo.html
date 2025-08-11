@@ -1,58 +1,112 @@
+// scripts/catalogo.js
 
-<!doctype html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Catálogo - Robotics Lab</title>
-<meta name="description" content="Catálogo completo de proyectos y kits de robótica.">
-<meta name="author" content="Ricardo Sanjines">
-<link rel="icon" href="img/2.svg">
-<link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<header class="container header" role="banner">
-  <div class="brand"><img src="img/2.svg" alt=""><div><h1>Catálogo</h1></div></div>
-  <div>
-    <button class="hamburger" aria-expanded="false" aria-controls="site-nav">☰</button>
-    <nav id="site-nav" role="navigation" aria-label="Principal">
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="catalogo.html">Catálogo</a></li>
-        <li><a href="contacto.html">Solicitar Proyecto</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.querySelector('#catalogo-grid');
+    const filterSelect = document.querySelector('#filter');
+    const clearFavsBtn = document.querySelector('#clear-favs');
 
-<main class="container">
-  <section class="controls">
-    <label for="filter">Filtrar por categoría:</label>
-    <select id="filter" class="filter" aria-label="Filtrar productos">
-      <option value="all">Todas</option>
-    </select>
-    <button id="clear-favs" class="filter">Borrar favoritos</button>
-  </section>
+    const modalBackdrop = document.querySelector('#modal-backdrop');
+    const modalContent = document.querySelector('#modal-content');
+    const modalClose = document.querySelector('#modal-close');
 
-  <section>
-    <h2>Catálogo completo</h2>
-    <div id="catalogo-grid" class="grid" aria-live="polite"></div>
-  </section>
-</main>
+    let proyectos = [];
+    let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
 
-<!-- Accessible modal -->
-<div id="modal-backdrop" class="modal-backdrop" role="dialog" aria-hidden="true">
-  <div class="modal" role="document" aria-modal="true">
-    <button class="close" id="modal-close" aria-label="Cerrar">✕</button>
-    <div id="modal-content"></div>
-  </div>
-</div>
+    // Función para renderizar proyectos
+    function renderProyectos(lista) {
+        grid.innerHTML = '';
+        if (lista.length === 0) {
+            grid.innerHTML = '<p>No hay proyectos disponibles.</p>';
+            return;
+        }
 
-<footer class="container footer">
-  <div>© Ricardo Sanjines - Robotics Lab</div>
-  <div><a href="attributions.html">Atribuciones</a> · <a href="#">Video demo (enlace)</a></div>
-</footer>
+        lista.forEach(proyecto => {
+            const card = document.createElement('div');
+            card.classList.add('proyecto-card');
 
-<script type="module" src="scripts/catalogo.js"></script>
-</body>
-</html>
+            card.innerHTML = `
+                <img src="${proyecto.imagen}" alt="${proyecto.nombre}" loading="lazy">
+                <h3>${proyecto.nombre}</h3>
+                <p>${proyecto.descripcion}</p>
+                <p><strong>Precio:</strong> $${proyecto.precio}</p>
+                <button class="ver-detalles">Ver detalles</button>
+                <button class="favorito">
+                    ${favoritos.includes(proyecto.id) ? '★ Quitar de favoritos' : '☆ Agregar a favoritos'}
+                </button>
+            `;
+
+            // Detalles
+            card.querySelector('.ver-detalles').addEventListener('click', () => {
+                modalContent.innerHTML = `
+                    <h2>${proyecto.nombre}</h2>
+                    <img src="${proyecto.imagen}" alt="${proyecto.nombre}" loading="lazy">
+                    <p>${proyecto.descripcion}</p>
+                    <p><strong>Precio:</strong> $${proyecto.precio}</p>
+                `;
+                modalBackdrop.setAttribute('aria-hidden', 'false');
+                modalBackdrop.style.display = 'flex';
+            });
+
+            // Favoritos
+            card.querySelector('.favorito').addEventListener('click', () => {
+                if (favoritos.includes(proyecto.id)) {
+                    favoritos = favoritos.filter(id => id !== proyecto.id);
+                } else {
+                    favoritos.push(proyecto.id);
+                }
+                localStorage.setItem('favoritos', JSON.stringify(favoritos));
+                renderProyectos(lista);
+            });
+
+            grid.appendChild(card);
+        });
+    }
+
+    // Cerrar modal
+    modalClose.addEventListener('click', () => {
+        modalBackdrop.setAttribute('aria-hidden', 'true');
+        modalBackdrop.style.display = 'none';
+    });
+
+    // Cargar proyectos desde JSON
+    fetch('./data/proyectos.json')
+        .then(res => {
+            if (!res.ok) throw new Error(`Error HTTP: ${res.status}`);
+            return res.json();
+        })
+        .then(data => {
+            proyectos = data;
+
+            // Llenar filtro de categorías
+            const categorias = ['all', ...new Set(proyectos.map(p => p.categoria))];
+            categorias.forEach(cat => {
+                const option = document.createElement('option');
+                option.value = cat;
+                option.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
+                filterSelect.appendChild(option);
+            });
+
+            renderProyectos(proyectos);
+        })
+        .catch(err => {
+            console.error('Error cargando proyectos:', err);
+            grid.innerHTML = `<p style="color:red;">No se pudieron cargar los proyectos.</p>`;
+        });
+
+    // Filtrar por categoría
+    filterSelect.addEventListener('change', () => {
+        const categoria = filterSelect.value;
+        if (categoria === 'all') {
+            renderProyectos(proyectos);
+        } else {
+            renderProyectos(proyectos.filter(p => p.categoria === categoria));
+        }
+    });
+
+    // Borrar favoritos
+    clearFavsBtn.addEventListener('click', () => {
+        favoritos = [];
+        localStorage.removeItem('favoritos');
+        renderProyectos(proyectos);
+    });
+});
